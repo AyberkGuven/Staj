@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form>
+    
+    <div class="mb-3 mt-3">
+        <label for="Resminiz" class="form-label">Resminiz</label>
+        @*@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })*@
+        <input type="file" class="form-control" name="filename">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="T.C." class="form-label">T.C.</label>
+        <input type="text" class="form-control" id="T.C." placeholder="T.C. Kimlinizi giriniz" name="T.C.">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Adı" class="form-label">Adı</label>
+        <input type="text" class="form-control" id="Adı" placeholder="Adınızı giriniz" name="Adı">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Soyadı" class="form-label">Soyadı</label>
+        <input type="text" class="form-control" id="Soyadı" placeholder="Soyadınızı giriniz" name="Soyadı">
+    </div>
+    <div>
+        <label for="Cinsiyet" class="form-label">Cinsiyet</label>
+        <select class="form-control" id="Cinsiyetiniz" name="Cinsiyetiniz">
+            <option value="1">Kadın</option>
+            <option value="2">Erkek</option>
+        </select>
+    </div>
+    <div>
+        <label for="Sınıfı" class="form-label">Sağ Dolabı</label>
+        @*@Html.DropDownListFor(model => model.CreatStudentViewModels.TC, new SelectList(Model.classRoomViewModels, "Id", "Name"), new { @class = "form-control" })*@
+    <select class="form-control" id="Sınıfı" name="Sınıfı">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+    </select>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="comment">Adress:</label>
+        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+    </div><br />
+    <div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+</form>
+
