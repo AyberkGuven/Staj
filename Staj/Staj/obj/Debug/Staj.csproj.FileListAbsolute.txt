@@ -84,3 +84,5 @@ C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.csproj.CoreCompileInputs.ca
 C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.csproj.CopyComplete
 C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.dll
 C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.pdb
+C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.Migrations.Bizim.resources
+C:\Users\canbe\source\repos\Staj\Staj\obj\Debug\Staj.csproj.GenerateResource.cache
