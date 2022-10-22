@@ -115,11 +115,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Context\BizimDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210221148512_Bizim.cs" />
+    <Compile Include="Migrations\202210221148512_Bizim.designer.cs">
+      <DependentUpon>202210221148512_Bizim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Bizim.cs" />
+    <Compile Include="Models\Core.cs" />
+    <Compile Include="Models\DC.cs" />
+    <Compile Include="Models\Sipliter.cs" />
+    <Compile Include="Models\Sokak.cs" />
+    <Compile Include="Models\Tup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\BizimViewModel.cs" />
+    <Compile Include="ViewModel\CoreListViewModel.cs" />
+    <Compile Include="ViewModel\CreateDataViewModel.cs" />
+    <Compile Include="ViewModel\CreateViewModel.cs" />
+    <Compile Include="ViewModel\DcListViewModel.cs" />
+    <Compile Include="ViewModel\SipliterListViewModel.cs" />
+    <Compile Include="ViewModel\SokakListViewModel.cs" />
+    <Compile Include="ViewModel\TupListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -138,8 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Context\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202210221148512_Bizim.resx">
+      <DependentUpon>202210221148512_Bizim.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

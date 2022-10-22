@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Staj.Context;
+using Staj.Models;
+using Staj.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +14,109 @@ namespace Staj.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            using (var db = new BizimDbContext())
+            {
+                var data = (from b in db.Bizims
+                                join c in db.Cores
+                                on b.coreId equals c.Id
+                                join d in db.DCs
+                                on b.dcKabloId equals d.Id
+                                join s in db.Sokaks
+                                on b.sokakAdiId equals s.Id
+                                join t in db.Tups
+                                on b.tupId equals t.Id
+                                join sp in db.Sipliters
+                                on b.sipliterAdiId equals sp.Id
+                                select new BizimViewModel()
+                                {
+                                    Id = b.Id,
+                                    tupId = t.Name,
+                                    coreId = c.Name,
+                                    coreSirasi = b.coreSirasi,
+                                    dcKabloId = d.Name,
+                                    sokakAdiId = s.Name,
+                                    binaAdi = b.binaAdi,
+                                    Blok = b.Blok,
+                                    aktifKullanici = b.aktifKullanici,
+                                    sipliterAdiId = sp.Name,
+                                    coreKdSayisi = b.coreKdSayisi
+                                }).ToList();
+                return View(data);
+            }
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            using (var db = new BizimDbContext())
+            {
+                CreateDataViewModel data = new CreateDataViewModel();
+                data.CoreListViewModels = db.Cores.Select(
+                    c => new CoreListViewModel()
+                    {
+                        Id = c.Id,
+                        Name = c.Name
+                    }).ToList();
+                data.DcListViewModels = db.DCs.Select(
+                    dc => new DcListViewModel()
+                    {
+                        Id = dc.Id,
+                        Name = dc.Name
+                    }).ToList();
+                data.SokakListViewModels = db.Sokaks.Select(
+                    s => new SokakListViewModel()
+                    {
+                        Id = s.Id,
+                        Name = s.Name
+                    }).ToList();
+                data.SipliterListViewModels = db.Sipliters.Select(
+                    sp => new SipliterListViewModel()
+                    {
+                        Id = sp.Id,
+                        Name = sp.Name
+                    }).ToList();
+                data.TupListViewModels = db.Tups.Select(
+                    t => new TupListViewModel()
+                    {
+                        Id = t.Id,
+                        Name = t.Name
+                    }).ToList();
+                return View(data);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateDataViewModel mgData)
+        {
+            using (var db = new BizimDbContext())
+            {
+                Bizim Bizims = new Bizim();
+                Bizims.tupId = mgData.CreateViewModels.tupId;
+                Bizims.coreId = mgData.CreateViewModels.coreId;
+                Bizims.coreSirasi = mgData.CreateViewModels.coreSirasi;
+                Bizims.dcKabloId = mgData.CreateViewModels.dcKabloId;
+                Bizims.sokakAdiId = mgData.CreateViewModels.sokakAdiId;
+                Bizims.binaAdi = mgData.CreateViewModels.binaAdi;
+                Bizims.Blok = mgData.CreateViewModels.Blok;
+                Bizims.aktifKullanici = mgData.CreateViewModels.aktifKullanici;
+                Bizims.sipliterAdiId = mgData.CreateViewModels.sipliterAdiId;
+                Bizims.coreKdSayisi = mgData.CreateViewModels.coreKdSayisi;
+                db.Bizims.Add(Bizims);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var db = new BizimDbContext())
+            {
+                var Bizim = db.Bizims.Find(id);
+                db.Bizims.Remove(Bizim);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
         }
     }
 }

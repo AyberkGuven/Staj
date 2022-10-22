@@ -1,55 +1,120 @@
-﻿
+﻿@model Staj.ViewModel.CreateDataViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form>
-    
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     <div class="mb-3 mt-3">
-        <label for="Resminiz" class="form-label">Resminiz</label>
-        @*@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })*@
-        <input type="file" class="form-control" name="filename">
+        <label for="Tup" class="form-label">Tüp</label>
+        @Html.DropDownListFor(model => model.CreateViewModels.tupId, new SelectList(Model.CoreListViewModels, "Id", "Name"), new { @class = "form-control" })
     </div>
     <div class="mb-3 mt-3">
-        <label for="T.C." class="form-label">T.C.</label>
-        <input type="text" class="form-control" id="T.C." placeholder="T.C. Kimlinizi giriniz" name="T.C.">
+        <label for="Core" class="form-label">Core</label>
+        @Html.DropDownListFor(model => model.CreateViewModels.coreId, new SelectList(Model.CoreListViewModels, "Id", "Name"), new { @class = "form-control" })
     </div>
     <div class="mb-3 mt-3">
-        <label for="Adı" class="form-label">Adı</label>
-        <input type="text" class="form-control" id="Adı" placeholder="Adınızı giriniz" name="Adı">
+        <label for="CoreSirasi" class="form-label">Core Sırası</label>
+        @Html.TextBoxFor(m => m.CreateViewModels.coreSirasi, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div>
+        <label for="Dc" class="form-label">DC Kablo</label>
+        @Html.DropDownListFor(model => model.CreateViewModels.dcKabloId, new SelectList(Model.DcListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Sokak" class="form-label">Sokak Adı</label>
+        @Html.DropDownListFor(model => model.CreateViewModels.sokakAdiId, new SelectList(Model.SokakListViewModels, "Id", "Name"), new { @class = "form-control" })
     </div>
     <div class="mb-3 mt-3">
-        <label for="Soyadı" class="form-label">Soyadı</label>
+        <label for="BinaAdi" class="form-label">Bina Adı</label>
+        @Html.TextBoxFor(m => m.CreateViewModels.binaAdi, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Blok" class="form-label">Blok</label>
+        @Html.TextBoxFor(m => m.CreateViewModels.Blok, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="AktifKullanici" class="form-label">Aktif Kullanıcı</label>
+        @Html.TextBoxFor(m => m.CreateViewModels.aktifKullanici, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div>
+        <label for="Sipliter" class="form-label">Sipliter Adı</label>
+        @Html.DropDownListFor(model => model.CreateViewModels.sipliterAdiId, new SelectList(Model.SipliterListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="CoreKd" class="form-label">Core (KD) Sayısı</label>
+        @Html.TextBoxFor(m => m.CreateViewModels.coreKdSayisi, new { @class = "form-control", @playceholder = "Core (KD) Sayısını Giriniz" })
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+}
+
+<!--<form>
+    <div class="mb-3 mt-3">
+        <label for="T.C." class="form-label">Tüp</label>
+        <select class="form-control" id="Tup" name="Tup">
+            <option value="4">Mavi</option>
+            <option value="5">Menekşe</option>
+            <option value="6">Kahverengi</option>
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Adı" class="form-label">Core</label>
+        <select class="form-control" id="Core" name="Core">
+            <option value="1">41P1_01_DC_02</option>
+            <option value="2">41P1_01_DC_02_01</option>
+            <option value="3">41P1_01_DC_02_02</option>
+            <option value="4">41P1_01_DC_02_03</option>
+            <option value="5">41P1_01_DC_02_04</option>
+            <option value="6">41P1_01_DC_02_05</option>
+            <option value="7">41P1_01_DC_02_06</option>
+            <option value="8">41P1_01_DC_02_07</option>
+            <option value="9">41P1_01_DC_02_08</option>
+            <option value="10">41P1_01_DC_02_09</option>
+        </select>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Soyadı" class="form-label">Core Sırası</label>
         <input type="text" class="form-control" id="Soyadı" placeholder="Soyadınızı giriniz" name="Soyadı">
     </div>
     <div>
-        <label for="Cinsiyet" class="form-label">Cinsiyet</label>
-        <select class="form-control" id="Cinsiyetiniz" name="Cinsiyetiniz">
-            <option value="1">Kadın</option>
-            <option value="2">Erkek</option>
+        <label for="Cinsiyet" class="form-label">DC Kablo</label>
+        <select class="form-control" id="DcKablo" name="DcKablo">
+            <option value="1">41P1_01_DC_02</option>
+            <option value="2">41P1_01_DC_02_01</option>
+            <option value="3">41P1_01_DC_02_02</option>
+            <option value="4">41P1_01_DC_02_03</option>
+            <option value="5">41P1_01_DC_02_04</option>
+            <option value="6">41P1_01_DC_02_05</option>
+            <option value="7">41P1_01_DC_02_06</option>
+            <option value="8">41P1_01_DC_02_07</option>
+            <option value="9">41P1_01_DC_02_08</option>
+            <option value="10">41P1_01_DC_02_09</option>
         </select>
     </div>
     <div>
-        <label for="Sınıfı" class="form-label">Sağ Dolabı</label>
-        @*@Html.DropDownListFor(model => model.CreatStudentViewModels.TC, new SelectList(Model.classRoomViewModels, "Id", "Name"), new { @class = "form-control" })*@
-    <select class="form-control" id="Sınıfı" name="Sınıfı">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-    </select>
+        <label for="Sınıfı" class="form-label">Sağ Dolabı</label>-->
+@*@Html.DropDownListFor(model => model.CreatStudentViewModels.TC, new SelectList(Model.classRoomViewModels, "Id", "Name"), new { @class = "form-control" })*@
+<!--<select class="form-control" id="Sınıfı" name="Sınıfı">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
     </div>
     <div class="mb-3 mt-3">
         <label for="comment">Adress:</label>
@@ -58,5 +123,4 @@
     <div>
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </div>
-</form>
-
+</form>-->
