@@ -107,6 +107,74 @@ namespace Staj.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            using (var db = new BizimDbContext())
+            {
+                EditDataViewModel editV = new EditDataViewModel();
+                editV.EditViewModels = db.Bizims.Where(e => e.Id == id).Select(e => new EditViewModel()
+                {
+                    Id = e.Id,
+                    coreId = e.coreId,
+                    coreSirasi = e.coreSirasi,
+                    dcKabloId = e.dcKabloId,
+                    sokakAdiId = e.sokakAdiId,
+                    binaAdi = e.binaAdi,
+                    Blok = e.Blok,
+                    aktifKullanici = e.aktifKullanici,
+                    sipliterAdiId = e.sipliterAdiId,
+                    coreKdSayisi = e.coreKdSayisi
+                }).FirstOrDefault();
+                editV.CoreListViewModels = db.Cores.Select(c => new CoreListViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+                }).ToList();
+                editV.DcListViewModels = db.DCs.Select(dc => new DcListViewModel()
+                {
+                    Id = dc.Id,
+                    Name = dc.Name
+                }).ToList();
+                editV.SokakListViewModels = db.Sokaks.Select(s => new SokakListViewModel()
+                {
+                    Id = s.Id,
+                    Name = s.Name
+                }).ToList();
+                editV.SipliterListViewModels = db.Sipliters.Select(sp => new SipliterListViewModel()
+                {
+                    Id = sp.Id,
+                    Name = sp.Name
+                }).ToList();
+                editV.TupListViewModels = db.Tups.Select(t => new TupListViewModel()
+                {
+                    Id = t.Id,
+                    Name = t.Name
+                }).ToList();
+                return View(editV);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditDataViewModel mgData, int id)
+        {
+            using (var db = new BizimDbContext())
+            {
+                var edit = db.Bizims.Find(id);
+                edit.tupId = mgData.EditViewModels.tupId;
+                edit.coreId = mgData.EditViewModels.coreId;
+                edit.coreSirasi = mgData.EditViewModels.coreSirasi;
+                edit.sokakAdiId = mgData.EditViewModels.sokakAdiId;
+                edit.binaAdi = mgData.EditViewModels.binaAdi;
+                edit.Blok = mgData.EditViewModels.Blok;
+                edit.aktifKullanici = mgData.EditViewModels.aktifKullanici;
+                edit.sipliterAdiId = mgData.EditViewModels.sipliterAdiId;
+                edit.coreKdSayisi = mgData.EditViewModels.coreKdSayisi;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Delete(int id)
         {
             using (var db = new BizimDbContext())

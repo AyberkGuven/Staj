@@ -137,6 +137,8 @@
     <Compile Include="ViewModel\CreateDataViewModel.cs" />
     <Compile Include="ViewModel\CreateViewModel.cs" />
     <Compile Include="ViewModel\DcListViewModel.cs" />
+    <Compile Include="ViewModel\EditDataViewModel.cs" />
+    <Compile Include="ViewModel\EditViewModel.cs" />
     <Compile Include="ViewModel\SipliterListViewModel.cs" />
     <Compile Include="ViewModel\SokakListViewModel.cs" />
     <Compile Include="ViewModel\TupListViewModel.cs" />
@@ -149,6 +151,7 @@
     <Content Include="Views\Shared\_FooterBar.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

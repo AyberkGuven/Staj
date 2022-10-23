@@ -8,7 +8,7 @@
 {
     <div class="mb-3 mt-3">
         <label for="Tup" class="form-label">Tüp</label>
-        @Html.DropDownListFor(model => model.CreateViewModels.tupId, new SelectList(Model.CoreListViewModels, "Id", "Name"), new { @class = "form-control" })
+        @Html.DropDownListFor(model => model.CreateViewModels.tupId, new SelectList(Model.TupListViewModels, "Id", "Name"), new { @class = "form-control" })
     </div>
     <div class="mb-3 mt-3">
         <label for="Core" class="form-label">Core</label>

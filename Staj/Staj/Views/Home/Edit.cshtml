@@ -1,0 +1,53 @@
+﻿@model Staj.ViewModel.EditDataViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="mb-3 mt-3">
+        <label for="Tup" class="form-label">Tüp</label>
+        @Html.DropDownListFor(model => model.EditViewModels.tupId, new SelectList(Model.CoreListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Core" class="form-label">Core</label>
+        @Html.DropDownListFor(model => model.EditViewModels.coreId, new SelectList(Model.CoreListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="CoreSirasi" class="form-label">Core Sırası</label>
+        @Html.TextBoxFor(m => m.EditViewModels.coreSirasi, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div>
+        <label for="Dc" class="form-label">DC Kablo</label>
+        @Html.DropDownListFor(model => model.EditViewModels.dcKabloId, new SelectList(Model.DcListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="Sokak" class="form-label">Sokak Adı</label>
+        @Html.DropDownListFor(model => model.EditViewModels.sokakAdiId, new SelectList(Model.SokakListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="BinaAdi" class="form-label">Bina Adı</label>
+        @Html.TextBoxFor(m => m.EditViewModels.binaAdi, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Blok" class="form-label">Blok</label>
+        @Html.TextBoxFor(m => m.EditViewModels.Blok, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="AktifKullanici" class="form-label">Aktif Kullanıcı</label>
+        @Html.TextBoxFor(m => m.EditViewModels.aktifKullanici, new { @class = "form-control", @playceholder = "Core Sırasını Giriniz" })
+    </div>
+    <div>
+        <label for="Sipliter" class="form-label">Sipliter Adı</label>
+        @Html.DropDownListFor(model => model.EditViewModels.sipliterAdiId, new SelectList(Model.SipliterListViewModels, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div>
+        <label for="CoreKd" class="form-label">Core (KD) Sayısı</label>
+        @Html.TextBoxFor(m => m.EditViewModels.coreKdSayisi, new { @class = "form-control", @playceholder = "Core (KD) Sayısını Giriniz" })
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+}

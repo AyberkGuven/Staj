@@ -35,10 +35,11 @@
                 <td>@Html.DisplayFor(modelItem => item.dcKabloId)-@Html.DisplayFor(modelItem => item.sipliterAdiId)</td>
                 <td>@Html.DisplayFor(modelItem => item.coreKdSayisi)</td>
                 <td>
-                    <button type="button" class="btn btn-success">Güncelle</button>
-                    @*<button type="button" class="btn btn-danger">Sil</button>*@
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('SİLMEK İSTEDİĞİNE EMİNMİSİN?')" })
+                    @*<button type="button" class="btn btn-success">Güncelle</button>
+                    <button type="button" class="btn btn-danger">Sil</button>*@
                     @*@Html.ActionLink("Edit", "Edit",new { id = item.Id }) |*@
-                    @Html.ActionLink("Sil", "Delete",new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('SİLMEK İSTEDİĞİNE EMİNMİSİN?')"})
                 </td>
             </tr>
         }
