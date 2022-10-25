@@ -19,5 +19,6 @@ namespace Staj.Context
         public DbSet<Sokak> Sokaks { get; set; }
         public DbSet<Sipliter> Sipliters { get; set; }
         public DbSet<Tup> Tups { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

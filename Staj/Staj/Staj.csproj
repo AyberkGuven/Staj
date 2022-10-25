@@ -117,12 +117,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\BizimDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202210221148512_Bizim.cs" />
-    <Compile Include="Migrations\202210221148512_Bizim.designer.cs">
-      <DependentUpon>202210221148512_Bizim.cs</DependentUpon>
+    <Compile Include="Migrations\202210252040535_Bizim.cs" />
+    <Compile Include="Migrations\202210252040535_Bizim.designer.cs">
+      <DependentUpon>202210252040535_Bizim.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bizim.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Models\Sipliter.cs" />
     <Compile Include="Models\Sokak.cs" />
     <Compile Include="Models\Tup.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BizimViewModel.cs" />
     <Compile Include="ViewModel\CoreListViewModel.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="ViewModel\SipliterListViewModel.cs" />
     <Compile Include="ViewModel\SokakListViewModel.cs" />
     <Compile Include="ViewModel\TupListViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -152,6 +155,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Security\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,8 +167,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202210221148512_Bizim.resx">
-      <DependentUpon>202210221148512_Bizim.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202210252040535_Bizim.resx">
+      <DependentUpon>202210252040535_Bizim.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

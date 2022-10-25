@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <title>Login</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container mt-3">
+        <h2>Giriş form</h2>
+        @ViewBag.Mesaj
+        @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+        {
+            <div class="mb-3 mt-3">
+                <label for="UserName">UserName:</label>
+                <input type="text" class="form-control" id="UserName" placeholder="Enter UserName" name="UserName" required>
+            </div>
+            <div class="mb-3">
+                <label for="Password">Password:</label>
+                <input type="password" class="form-control" id="Password" placeholder="Enter Password" name="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş</button>
+        }
+    </div>
+</body>
+</html>
